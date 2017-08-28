@@ -1,4 +1,4 @@
-var game = new Game($(".arrow"), $(".arrowContainer"), 0, $(".bullseyeRed"), 0, 0);
+var game = new Game($(".arrow"), $(".arrowContainer"), 0, $(".bullseyeRed"), 0, 0, 5);
 $( document ).ready(function() {
 console.log(game);
 

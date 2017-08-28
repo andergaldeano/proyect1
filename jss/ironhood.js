@@ -1,4 +1,4 @@
-function Game(arrow, arrowContainer, angle, bullseyeRed, points, bullseyePosition){
+function Game(arrow, arrowContainer, angle, bullseyeRed, points, bullseyePosition, maxArrows){
   //this.maxArrows = maxArrowNumber || 3
   this.arrow = arrow;
   this.arrowContainer = arrowContainer;
@@ -7,6 +7,8 @@ function Game(arrow, arrowContainer, angle, bullseyeRed, points, bullseyePositio
   this.height = window.innerHeight - (this.bullseyeRed.position().top) - ((this.bullseyeRed.height())/2) - (this.arrow.height());
   this.points = points;
   this.bullseyePosition = bullseyePosition;
+  this.maxArrows = maxArrows;
+  this.shootsDone = 0;
 
 }
 
@@ -24,11 +26,12 @@ Game.prototype.handleShoot = function(ev, arrow){
   arrow.css('bottom', this.height);
   arrow.css('left', collision);
   this.resetBulleyePosition();
-  console.log(this.bullseyePosition);
 
   // this.score(collision, this.height);
 
-  // this.scores();
+  setTimeout(function(){
+    this.scores(collision, this.bullseyePosition);
+  }. bind(this), 500);
 
 
 
@@ -39,6 +42,7 @@ Game.prototype.handleShoot = function(ev, arrow){
      this.smash(this.arrow);
      this.arrow = $('.arrow').last();
      this.angle = 0;
+
    }  . bind(this), 500);
 
   //  var trueCollision = collision + (($(".field").width())/2);
@@ -71,13 +75,24 @@ Game.prototype.smash  = function(elem){
 //   console.log(this.points);
 // };
 
-// Game.prototype.scores = function (y){
-//   var diana
-// if (y = )
-//
-// }
+Game.prototype.scores = function (yArrow, yBulleye){
+if (yArrow > yBulleye && yArrow < (yBulleye + 65) || yArrow > (yBulleye+155) && yArrow < (yBulleye + 220)){
+console.log("puntitos rojos");
+this.points += 25;
+this.addScore(this.points)
+}
+else if (yArrow > (yBulleye + 65) && yArrow < (yBulleye+155)){
+  console.log("PUNTITOS RICOS");
+  this.points += 50;
+  this.addScore(this.points)
+}
+};
 
 Game.prototype.resetBulleyePosition = function (){
   var nextPosition = this.bullseyeRed.position().left;
   this.bullseyePosition = nextPosition;
+};
+
+Game.prototype.addScore = function(number){
+document.getElementsByTagName("spam")[0].innerHTML= number;
 };
