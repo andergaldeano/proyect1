@@ -1,0 +1,107 @@
+body{
+  padding: 0px;
+  margin: 0px;
+}
+.field{
+  width: 100%;
+  height: calc(100vh - 5px);
+  background-image: url("../imagenes/fondo.jpg");
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+}
+
+.goal{
+  width: 100%;
+  margin: auto;
+  height: 35vh;
+  position: relative;
+  background-image: url("../imagenes/Pared.jpg");
+}
+
+.bullseyeRed{
+width: 220px;
+height: 220px;
+position: absolute;
+top: 60px;
+left: calc(50% - 40px);
+background: red;
+border-radius: 100%;
+/*animation: 8s move infinite;
+animation-timing-function: linear;*/
+
+}
+
+@keyframes move {
+  0% {
+    left: 0%;
+  }
+  50% {
+    left: calc(100% - 80px);
+  }
+  100% {
+    left: 0%;
+  }
+}
+.bullseye{
+width: 90px;
+height: 90px;
+position: absolute;
+top: calc(50% - 45px);
+left: calc(50% - 45px);
+background: white;
+border-radius: 100%;
+
+}
+
+.bow{
+  width: 100px;
+  height: 100px;
+  left: 50%;
+  background: pink;
+  position: absolute;
+  top: 400px;
+  transition: all 0.5s linear;
+}
+
+.arrow{
+  background-image: url("../imagenes/carrot3.png");
+background-size: cover;
+  position: absolute;
+  left: calc(50% - 20px);  
+  bottom: 110PX;
+  width: 40px;
+  height: 80px;
+  transition: all 0.5s linear;
+}
+
+.score{
+  background: grey;
+  position: absolute;
+
+}
+
+.player{
+  background-size: cover;
+  height: 180px;
+  width: 250px;
+  position: absolute;
+  left: calc(50% - 175px);
+  bottom: 0px;
+}
+
+.player--rabbit {
+  background-image: url("../imagenes/sexybunny.gif");
+}
+
+.player--panda {
+  background-image: url("../imagenes/pandachoced.gif");
+}
+
+.stick{
+  background-image: url("../imagenes/mancha.png");
+  background-size: cover;
+  width: 90px;
+  height: 90px;
+  transition: none;
+}
