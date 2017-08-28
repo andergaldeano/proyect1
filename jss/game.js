@@ -1,6 +1,7 @@
-var game = new Game($(".arrow"), $(".arrowContainer"), 0, $(".bullseyeRed"), 0);
+var game = new Game($(".arrow"), $(".arrowContainer"), 0, $(".bullseyeRed"), 0, 0);
 $( document ).ready(function() {
 console.log(game);
+
 });
 
 $(document).on("keydown", function(ev){

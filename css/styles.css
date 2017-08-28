@@ -24,11 +24,11 @@ width: 220px;
 height: 220px;
 position: absolute;
 top: 60px;
-left: calc(50% - 40px);
+left: 0px;
 background: red;
 border-radius: 100%;
-/*animation: 8s move infinite;
-animation-timing-function: linear;*/
+  animation: 8s move infinite;
+  animation-timing-function: linear;
 
 }
 
@@ -68,7 +68,7 @@ border-radius: 100%;
   background-image: url("../imagenes/carrot3.png");
 background-size: cover;
   position: absolute;
-  left: calc(50% - 20px);  
+  left: calc(50% - 20px);
   bottom: 110PX;
   width: 40px;
   height: 80px;

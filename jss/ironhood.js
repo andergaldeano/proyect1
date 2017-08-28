@@ -1,4 +1,4 @@
-function Game(arrow, arrowContainer, angle, bullseyeRed, points){
+function Game(arrow, arrowContainer, angle, bullseyeRed, points, bullseyePosition){
   //this.maxArrows = maxArrowNumber || 3
   this.arrow = arrow;
   this.arrowContainer = arrowContainer;
@@ -6,6 +6,8 @@ function Game(arrow, arrowContainer, angle, bullseyeRed, points){
   this.bullseyeRed = bullseyeRed;
   this.height = window.innerHeight - (this.bullseyeRed.position().top) - ((this.bullseyeRed.height())/2) - (this.arrow.height());
   this.points = points;
+  this.bullseyePosition = bullseyePosition;
+
 }
 
 
@@ -21,8 +23,12 @@ Game.prototype.handleShoot = function(ev, arrow){
                   ((this.arrow.width())/2);
   arrow.css('bottom', this.height);
   arrow.css('left', collision);
+  this.resetBulleyePosition();
+  console.log(this.bullseyePosition);
 
-  this.score(collision, this.height);
+  // this.score(collision, this.height);
+
+  // this.scores();
 
 
 
@@ -50,17 +56,28 @@ Game.prototype.smash  = function(elem){
 };
 
 
-Game.prototype.score = function(x, y){
-    var elements = document.elementFromPoint(x, y);
-    console.log(elements);
+// Game.prototype.score = function(x, y){
+//     var elements = document.elementFromPoint(x, y);
+//     console.log(elements);
+//
+//
+//     if(elements.id == "white"){
+//         this.points += 50 ;}
+//     else if (elements.id == "red" ){
+//         this.points += 25 ;}
+//     // else{
+//     //     this.points += 0 ;
+//     //     }
+//   console.log(this.points);
+// };
 
+// Game.prototype.scores = function (y){
+//   var diana
+// if (y = )
+//
+// }
 
-    if(elements.id == "white"){
-        this.points += 50 ;}
-    else if (elements.id == "red" ){
-        this.points += 25 ;}
-    // else{
-    //     this.points += 0 ;
-    //     }
-  console.log(this.points);
+Game.prototype.resetBulleyePosition = function (){
+  var nextPosition = this.bullseyeRed.position().left;
+  this.bullseyePosition = nextPosition;
 };
