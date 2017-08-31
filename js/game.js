@@ -1,14 +1,7 @@
-var game = new Game($(".arrow"), $(".arrowContainer"), 0, $(".bullseyeRed"), 0, 0, 5);
-$( document ).ready(function() {
-
-});
-
-$(document).on("keydown", function(ev){
-  if(ev.keyCode === 37 || ev.keyCode === 39){
-    game.handleMovement(ev.keyCode, game.arrow);
-    return;
-  } else if(ev.keyCode === 32){
-    game.canShoot(ev.keyCode, game.arrow);
-    return;
-  }
-});
+function Game(){
+  createGame(5);
+  this.bullseyes = new Bullseyes ($(".bullseyeRed"), 0);
+  this.arrow = new Arrow($(".arrow"), $(".arrowContainer"), $(".bullseyeRed"), 0, 0, 5, 0);
+  this.player = new Player(0, $('.overlay .points'));
+  this.impact = new Impact($(".bullseye"), $(".bullseyeRed"), $('.overlay'), $("#effects"), $(".bullseyeRed").css("width"), 100);
+}

@@ -15,41 +15,41 @@ function Arrow(arrow, arrowContainer, bullseyeRed, bullseyePosition, angle, maxA
 
 // Changes the arrows angle
 
-Arrow.prototype.handleMovement = function(key, element){
+Arrow.prototype.handleMovement = function(key, game){
     key === 39 ? this.angle += 3 : this.angle -= 3;
-  element.css("transform", "rotate(" + this.angle + "deg)");
+  game.arrow.arrow.css("transform", "rotate(" + this.angle + "deg)");
 };
 
 // Shows if its possible to shoot
 
-Arrow.prototype.canShoot = function(ev, arrow){
-  if(this.shootsDone < this.maxArrows ){this.shoot(ev, arrow);
+Arrow.prototype.canShoot = function(ev, game){
+  if(this.shootsDone < this.maxArrows ){this.shoot(ev, game);
   }
 };
 
 //Finds the point of the arrows colision and actives next steps
 
-Arrow.prototype.shoot = function(ev, arrow){
+Arrow.prototype.shoot = function(ev, game){
   var collision = (($(".field").width())/2) +
                   (this.height * Math.sin(this.toRadians(this.angle)) /
                    Math.sin(this.toRadians(180 - Math.abs(this.angle) - 90))) -
                   ((this.arrow.width())/2);
-  arrow.addClass('arrow-animated');
-  arrow.css('bottom', this.height);
-  arrow.css('left', collision);
+  game.arrow.arrow.addClass('arrow-animated');
+  game.arrow.arrow.css('bottom', this.height);
+  game.arrow.arrow.css('left', collision);
 
 
 
   setTimeout(function(){
-    bullseyes.resetBullseyePosition();
-    impact.scoreObtined(collision, this.bullseyePosition);
+    game.bullseyes.resetBullseyePosition(game);
+    game.impact.scoreObtined(collision, this.bullseyePosition, game);
     this.smash(this.arrow);
     this.createNewArrow();
   }. bind(this), 500);
 
 
   this.shootsDone += 1;
-  player.removeThisBullet(this.shootsDone);
+  game.player.removeThisBullet(this.shootsDone);
 
 
 };
