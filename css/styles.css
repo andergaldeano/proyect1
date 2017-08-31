@@ -1,35 +1,242 @@
-body{
-  padding: 0px;
-  margin: 0px;
-}
-.field{
+/*
+*
+START GAME SCREEN
+*
+*/
+
+.intro {
+  background-image: url("../imagenes/fondointro2.jpg");
+  background-size: cover;
   width: 100%;
   height: calc(100vh - 5px);
-  background-image: url("../imagenes/fondo.jpg");
+  z-index: 1;
+}
+
+.hide {
+  z-index: 0;
+}
+
+
+/*
+Gifs on main screen
+*/
+
+.hello1 {
+  background-size: cover;
+  height: 150px;
+  width: 120px;
+  position: absolute;
+  left: 25%;
+  bottom: 25px;
+  background-image: url("../imagenes/carrot.gif");
+}
+
+.hello2 {
+  background-size: cover;
+  height: 260px;
+  width: 250px;
+  position: absolute;
+  left: calc(70% - 175px);
+  bottom: 25px;
+  background-image: url("../imagenes/rabbitchoseme.gif");
+}
+
+
+/*
+Main board
+*/
+
+.introBoard {
+  height: 320px;
+  width: 500px;
+  top: 15%;
+  left: calc(50% - 260px);
+  background-size: cover;
+  position: absolute;
+  background-image: url("../imagenes/introboard.png");
+  text-align: center;
+}
+
+.introTitle {
+  width: 100%;
+  height: 100px;
+  color: white;
+  font-weight: bold;
+  font-size: 60px;
+  font-family: 'Monospace';
+  text-align: center;
+  line-height: 0px;
+  padding-top: 40px;
+}
+
+
+/*
+Start Game button
+*/
+
+.buttonContainer {
+  width: 100%;
+  height: 330px;
+  padding-top: 20px;
+}
+
+button {
+  width: 150px;
+  height: 90px;
+  background-image: url("../imagenes/button.jpg");
+  color: white;
+  font-weight: bold;
+  font-size: 30px;
+  font-family: 'Monospace';
+}
+
+
+/*
+*
+*
+*
+GAME GAME GAME GAME GAME GAME GAME
+*
+*
+*/
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(0deg);
+    color: red;
+  }
+  25% {
+    transform: rotate(-5deg);
+    color: blue;
+  }
+  75% {
+    transform: rotate(5deg);
+    color: yellow;
+  }
+  100% {
+    transform: rotate(0deg);
+    color: pink;
+  }
+}
+
+body {
+  padding: 0px;
+  margin: 0px;
+  font-family: arial;
+}
+
+
+/*
+full screen
+*/
+
+.field {
+  width: 100%;
+  height: calc(100vh - 5px);
+  background-image: url("../imagenes/fondo1.jpg");
   background-size: cover;
   position: relative;
   overflow: hidden;
 }
 
-.goal{
+
+/*
+bullseyes area
+*/
+
+.goal {
   width: 100%;
   margin: auto;
-  height: 35vh;
+  height: 45vh;
   position: relative;
-  background-image: url("../imagenes/Pared.jpg");
+  background-image: url("../imagenes/pared2.jpg");
 }
 
-.bullseyeRed{
-width: 220px;
-height: 220px;
-position: absolute;
-top: 60px;
-left: 0px;
-background: red;
-border-radius: 100%;
-  animation: 8s move infinite;
-  animation-timing-function: linear;
 
+/* Start Game info*/
+
+.rulesContainer {
+  background-image: url("../imagenes/difuminado.jpg");
+  background-size: cover;
+  width: 100%;
+  position: absolute;
+  height: calc(100vh - 5px);
+
+}
+
+
+
+.infoTitle {
+  padding-top: 0px;
+  height: 140px;
+  font-size: 35px;
+  line-height: 42px;
+}
+
+.infoButtonContainer {
+  width: 100%;
+  height: 130px;
+  padding-top: 10px;
+}
+
+
+/*
+congratulations message after make points
+*/
+
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: url("../imagenes/confeti.gif");
+  z-index: 9;
+  transition: opacity 0.5s;
+  opacity: 0;
+  text-align: center;
+  transition: opacity 2s;
+}
+
+.overlay .points {
+  position: absolute;
+  top: calc(50% - 50px);
+  margin: auto;
+  left: 0;
+  right: 0;
+  color: white;
+  font-size: 100px;
+  text-shadow: 1px 1px black;
+  animation: shake 0.2s infinite;
+}
+
+.overlay.active {
+  opacity: 1;
+}
+
+
+/*
+bullseyes
+*/
+
+.bullseyeRed {
+  width: 120px;
+  height: 120px;
+  position: absolute;
+  top: 60px;
+  left: 0px;
+  background: red;
+  border-radius: 100%;
+  animation: 10s move infinite;
+  animation-timing-function: linear;
 }
 
 @keyframes move {
@@ -43,18 +250,28 @@ border-radius: 100%;
     left: 0%;
   }
 }
-.bullseye{
-width: 90px;
-height: 90px;
-position: absolute;
-top: calc(50% - 45px);
-left: calc(50% - 45px);
-background: white;
-border-radius: 100%;
 
+
+/*
+bullseye white side
+*/
+
+.bullseye {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: calc(50% - 20px);
+  left: calc(50% - 20px);
+  background: white;
+  border-radius: 100%;
 }
 
-.bow{
+
+/*
+arrow container(invisible)
+*/
+
+.bow {
   width: 100px;
   height: 100px;
   left: 50%;
@@ -64,24 +281,31 @@ border-radius: 100%;
   transition: all 0.5s linear;
 }
 
-.arrow{
+
+/*
+arrows
+*/
+
+.arrow {
   background-image: url("../imagenes/carrot3.png");
-background-size: cover;
+  background-size: cover;
   position: absolute;
   left: calc(50% - 20px);
   bottom: 110PX;
   width: 40px;
   height: 80px;
+}
+
+.arrow-animated {
   transition: all 0.5s linear;
 }
 
-.score{
-  background: grey;
-  position: absolute;
 
-}
+/*
+players
+*/
 
-.player{
+.player {
   background-size: cover;
   height: 180px;
   width: 250px;
@@ -98,31 +322,214 @@ background-size: cover;
   background-image: url("../imagenes/pandachoced.gif");
 }
 
-.stick{
+
+/*
+change the bullets image when hits against
+*/
+
+.stick {
   background-image: url("../imagenes/mancha.png");
   background-size: cover;
   width: 90px;
   height: 90px;
   transition: none;
+  animation: fadeOut 1s;
+  animation-fill-mode: forwards;
+}
+
+.stickOnBullseye {
+  background-image: url("../imagenes/mancha.png");
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  transition: none;
+  float: left;
+  margin-top: 10%;
 }
 
 
-.gamePoints{
+/*
+Score Board
+*/
+
+#board {
   position: absolute;
-  left: 10%;
-  bottom: 20px;
-	width: 200px;
-	height: 150px;
-  background: yellow;
-  background: linear-gradient(60deg, yellow, #fff380);
-
-	position: absolute;
-	text-align: center;
+  width: 200px;
+  height: 150px;
+  background: linear-gradient(#616161, #474747);
+  border: 8px solid #9f7037;
+  box-shadow: inset 0 0 2px 2px rgba(0, 0, 0, 0.3), inset 0 30px 30px rgba(255, 255, 255, 0.1);
+  text-align: center;
+  color: white;
+  font-weight: bold;
   font-size: 20px;
-	}
+  font-family: 'Monospace';
+  letter-spacing: 3px;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+  bottom: 40px;
+  left: 10%;
+}
 
-  spam {
-    font-size: 50px;
-    padding-bottom: 20px;
+#board:after {
+  content: "";
+  display: block;
+  position: absolute;
+  border-radius: 0.1em 0.1em 0 0.1em;
+  width: 50px;
+  height: 8px;
+  background: #f1f1f1;
+  bottom: -1px;
+  right: 15px;
+  box-shadow: inset 0 -4px 1px rgba(0, 0, 0, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.2), 0 2px 0 rgba(0, 0, 0, 0.3);
+}
 
-  }
+span {
+  font-size: 50px;
+  padding-bottom: 20px;
+}
+
+
+/*
+bullets left
+*/
+
+.shootsLeft {
+  position: absolute;
+  bottom: 40px;
+  left: 65%;
+  width: 250px;
+  height: 170px;
+  text-align: center;
+  font-size: 20px;
+  background-image: url("../imagenes/madero.png");
+  background-size: cover;
+}
+
+.bulletTitle {
+  width: 100%;
+  height: 30px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  font-family: 'Monospace';
+}
+
+.myBullets {
+  width: 100%;
+  height: 100px;
+}
+
+.bullet {
+  height: 80px;
+  width: 15%;
+  text-align: center;
+  float: left;
+  margin-left: 10px;
+  background-size: cover;
+}
+
+.bullet-1 {
+  background-image: url("../imagenes/carrotBullet.png");
+}
+
+.bullet-2 {
+  background-image: url("../imagenes/carrotBullet.png");
+}
+
+.bullet-3 {
+  background-image: url("../imagenes/carrotBullet.png");
+}
+
+.bullet-4 {
+  background-image: url("../imagenes/carrotBullet.png");
+}
+
+.bullet-5 {
+  background-image: url("../imagenes/carrotBullet.png");
+}
+
+.bullet-6 {
+  background-image: url("../imagenes/carrotBullet.png");
+}
+
+.bullet-7 {
+  background-image: url("../imagenes/carrotBullet.png");
+}
+
+.bullet-8 {
+  background-image: url("../imagenes/carrotBullet.png");
+}
+
+.bulletEmpty {
+  background-image: url("../imagenes/carrotBullet2.png");
+}
+
+
+/*
+WINNER!!!!!!!
+*/
+
+.winContainer {
+  background-image: url("../imagenes/difuminado.jpg");
+  background-size: cover;
+  width: 100%;
+  position: absolute;
+  height: calc(100vh - 5px);
+  z-index: 0;
+}
+
+.show {
+  z-index: 1;
+}
+
+.winTitle {
+  padding-top: 20px;
+  height: 140px;
+  font-size: 35px;
+  line-height: 42px;
+}
+
+.winButtonContainer {
+  width: 100%;
+  height: 130px;
+  padding-top: 10px;
+}
+
+.winPlayer {
+  background-size: cover;
+  height: 150px;
+  width: 120px;
+  position: absolute;
+  left: calc(50% - 60px);
+  bottom: 25px;
+  background-image: url("../imagenes/winbunnu.gif");
+}
+
+
+}
+/*
+LOOSER
+  */
+.loseContainer {
+  background-image: url("../imagenes/difuminado.jpg");
+  background-size: cover;
+  width: 100%;
+  position: absolute;
+  height: calc(100vh - 5px);
+
+}
+.loseButtonContainer {
+  width: 100%;
+  height: 130px;
+  padding-top: 10px;
+}
+.losePlayer {
+  background-size: cover;
+  height: 150px;
+  width: 150px;
+  position: absolute;
+  left: calc(50% - 60px);
+  bottom: 25px;
+  background-image: url("../imagenes/rabbitlose.gif");
+}

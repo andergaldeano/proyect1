@@ -1,6 +1,5 @@
 var game = new Game($(".arrow"), $(".arrowContainer"), 0, $(".bullseyeRed"), 0, 0, 5);
 $( document ).ready(function() {
-console.log(game);
 
 });
 
@@ -9,7 +8,7 @@ $(document).on("keydown", function(ev){
     game.handleMovement(ev.keyCode, game.arrow);
     return;
   } else if(ev.keyCode === 32){
-    game.handleShoot(ev.keyCode, game.arrow);
+    game.canShoot(ev.keyCode, game.arrow);
     return;
   }
 });
