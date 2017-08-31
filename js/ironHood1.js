@@ -10,7 +10,7 @@ function startGame(){
   bullseyes = new Bullseyes ($(".bullseyeRed"), 0);
   arrow = new Arrow($(".arrow"), $(".arrowContainer"), $(".bullseyeRed"), 0, 0, 5, 0);
   player = new Player(0, $('.overlay .points'));
-  impact = new Impact($(".bullseye"), $(".bullseyeRed"), $('.overlay'), $("#effects"), $(".bullseyeRed").css("width"));
+  impact = new Impact($(".bullseye"), $(".bullseyeRed"), $('.overlay'), $("#effects"), $(".bullseyeRed").css("width"), 100);
 }
 
 $( document ).ready(function() {
@@ -43,17 +43,3 @@ $(document).on("keydown", function(ev){
       $(".field, .winPlayer").show(0);
       deleteGame();
       startGame();});
-
-
-
-
-
- // $( "#levelUp" ).on( "click", function(){
- //    $(".winContainer").removeClass("show");
- //    arrow = new Arrow($(".arrow"), $(".arrowContainer"), $(".bullseyeRed"), 0, 0, 5);
- //    player = new Player(0, $('.overlay .points'));
- //    impact = new Impact($(".bullseye"), $(".bullseyeRed"), $('.overlay'), $("#effects"), $(".bullseyeRed").css("width"));
- //    bullseyes = new Bullseyes($(".bullseyeRed"), 0);
- //
- //  }
- //  );

@@ -1,8 +1,9 @@
-function Impact(bullseye, bullseyeRed, overlay, sound, bullseyeWidth){
+function Impact(bullseye, bullseyeRed, overlay, sound, bullseyeWidth, scoreToRise){
   this.bullseye = bullseye;
   this.bullseyeRed = bullseyeRed;
   this.overlay = overlay;
   this.sound = sound;
+  this.scoreToRise = scoreToRise;
   this.bullseyeWidth = bullseyeWidth.substring(0, bullseyeWidth.length - 2);
 }
 
@@ -45,11 +46,11 @@ Impact.prototype.arrowStickedOnRed = function(){
 // checks if the game is overla
 
 Impact.prototype.isItTheFinal = function(){
-  if(arrow.maxArrows == arrow.shootsDone && player.score >= 100){
+  if(arrow.maxArrows == arrow.shootsDone && player.score >= this.scoreToRise){
     var winContainer = function(){$(".winContainer").addClass("show");};
     setTimeout( winContainer, 2000);
   }
-  else if (player.score < 100 && arrow.maxArrows == arrow.shootsDone ){
+  else if (player.score < this.scoreToRise && arrow.maxArrows == arrow.shootsDone ){
     var loseContainer = function(){$(".field, .winPlayer").hide(0);};
     setTimeout( loseContainer, 2000);
   }

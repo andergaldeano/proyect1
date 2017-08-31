@@ -16,7 +16,5 @@ Player.prototype.addScore = function(number){
 // Remove the images of the bullets once the shoot is done
 
 Player.prototype.removeThisBullet = function (bulletNumber){
-  console.log("estoy borrando zanahorias", bulletNumber);
-
     $(".bullet-" + bulletNumber).addClass('bulletEmpty');
   };
