@@ -5,7 +5,14 @@ this.bullseyeRed = bullseyeRed;
 
 //take the bullseyes new position
 
-Bullseyes.prototype.resetBullseyePosition = function (game){
+Bullseyes.prototype.resetBullseyePosition = function (game, x){
+
   var nextPosition = this.bullseyeRed.position().left;
-  game.arrow.bullseyePosition = nextPosition;
+  x.push(nextPosition);
 };
+
+//
+// var nextPosition = this.bullseyeRed.map(function(x){
+//   console.log(x)
+//   return x.position().left;
+// });

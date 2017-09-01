@@ -8,10 +8,8 @@ function Arrow(arrow, arrowContainer, bullseyeRed, bullseyePosition, angle, maxA
   this.bullseyeRed = bullseyeRed;
   this.height = window.innerHeight - (this.bullseyeRed.position().top) - ((this.bullseyeRed.height())/2) - (this.arrow.height());
   this.maxArrows = maxArrows;
+
 }
-
-
-
 
 // Changes the arrows angle
 
@@ -23,7 +21,8 @@ Arrow.prototype.handleMovement = function(key, game){
 // Shows if its possible to shoot
 
 Arrow.prototype.canShoot = function(ev, game){
-  if(this.shootsDone < this.maxArrows ){this.shoot(ev, game);
+  if(this.shootsDone < this.maxArrows ){
+    this.shoot(ev, game);
   }
 };
 
@@ -38,14 +37,16 @@ Arrow.prototype.shoot = function(ev, game){
   game.arrow.arrow.css('bottom', this.height);
   game.arrow.arrow.css('left', collision);
 
-
+  var diferentBullseyesPositions = [];
 
   setTimeout(function(){
-    game.bullseyes.resetBullseyePosition(game);
-    game.impact.scoreObtined(collision, this.bullseyePosition, game);
+    game.bullseyes1.resetBullseyePosition(game, diferentBullseyesPositions);
+    if (game.bullseyes2){game.bullseyes2.resetBullseyePosition(game, diferentBullseyesPositions);}
+
+    game.impact.scoreObtined(collision, diferentBullseyesPositions, game);
     this.smash(this.arrow);
     this.createNewArrow();
-  }. bind(this), 500);
+  }.bind(this), 500);
 
 
   this.shootsDone += 1;
@@ -68,7 +69,7 @@ Arrow.prototype.smash  = function(elem){
   elem.addClass("stick");
 };
 
-//
+//Creates a new arrow once the shoot is done, and resets the angle
 
 Arrow.prototype.reset = function(elem) {
   elem.removeClass('arrow-animated');
@@ -78,7 +79,7 @@ Arrow.prototype.reset = function(elem) {
   this.angle = 0;
 };
 
-// Creates a new arrow once the shoot is done, and resets the angle
+// Calls reset function waiting 0,5 seconds that is the time that takes thearrow to hit the wall
 
 Arrow.prototype.createNewArrow = function (){
   setTimeout( function() {

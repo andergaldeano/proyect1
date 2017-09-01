@@ -1,7 +1,27 @@
-   var game 
-$( document ).ready(function() {
+  var levelCounter = 0;
 
- game = new Game();
+  var levels = [
+    { arrows: 5,
+      dianas: 1,
+      moving: false,
+      level: 0,
+    },
+    {
+      arrows: 5,
+      dianas: 1,
+      moving: true,
+      level: 1,
+    },
+    {
+      arrows: 5,
+      dianas: 2,
+      moving: true,
+      level: 2,
+    },
+  ];
+
+$( document ).ready(function() {
+ game = new Game(levels[0]);
 
   $(document).on("keydown", function(ev){
     if(ev.keyCode === 37 || ev.keyCode === 39){
@@ -15,18 +35,34 @@ $( document ).ready(function() {
 });
 
 
+
 // Start Game button
 
-    $("#rockIt").click(function(){
-        $(".intro").hide(0);
-    });
+$("#rockIt").click(function(){
+    $(".intro").hide();
+});
+// Pass to next level
+
+$("#levelUp").click(function(){
+  levelCounter++;
+  $(".winContainer").hide();
+  deleteGame();
+
+  // startGame();
+
+ game = new Game(levels[levelCounter]);
+ game.test = Math.random();
+
+});
 
 // Reset button
 
-    $("#reset").click(function(){
-      $(".field, .winPlayer").show(0);
-      deleteGame();
-      // startGame();
-     game = new Game();
+$("#reset").click(function(){
+  $(".loseContainer").hide();
+  deleteGame();
 
-    });
+  // startGame();
+  game = new Game(levels[levelCounter]);
+ game.test = Math.random();
+
+});

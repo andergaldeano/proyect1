@@ -1,16 +1,21 @@
 
-function createGame(number){
-  $('.goal').append('<div class="bullseyeRed"><div class="bullseye"></div></div>');
+function createGame(arrowsNumber, isMoving, levelCounter){
+  var classname =  isMoving ? 'moving' : '';
+  $('.goal').append('<div class="bullseyeRed ' + classname + '""><div class="bullseye"></div></div>');
 
-  for (var i = 1; i <= number; i++) {
+  if(levelCounter === 2){  $('.goal').append('<div class="bullseyeRed movingBackward"><div class="bullseye"></div></div>');}
+  // $('.goal').append('<div class="bullseyeRed ' + classname + '""><div class="bullseye"></div></div>');
+
+
+  for (var i = 1; i <= arrowsNumber; i++) {
     $('.myBullets').append('<div class="bullet bullet-' + i + '"></div>');
-    }
+  }
 
-  $('.gamePoints').append('<span> 0</span>');
+  $('.gamePoints').append('<span>0</span>');
 }
 
 function deleteGame(number){
   $('.bullseyeRed').remove();
-    $('.bullet').remove();
-    $('span').remove();
+  $('.bullet').remove();
+  $('span').remove();
 }

@@ -232,9 +232,12 @@ bullseyes
   height: 120px;
   position: absolute;
   top: 60px;
-  left: 0px;
+  left: calc(50% - 60px);
   background: red;
   border-radius: 100%;
+}
+
+.moving {
   animation: 10s move infinite;
   animation-timing-function: linear;
 }
@@ -248,6 +251,24 @@ bullseyes
   }
   100% {
     left: 0%;
+  }
+}
+
+
+.movingBackward {
+  animation: 10s back infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes back {
+  0% {
+    left: calc(100% - 80px);
+  }
+  50% {
+    left: 0%;
+  }
+  100% {
+    left: calc(100% - 80px);
   }
 }
 
@@ -477,6 +498,8 @@ WINNER!!!!!!!
   position: absolute;
   height: calc(100vh - 5px);
   z-index: 0;
+  display: none;
+  z-index: 1;
 }
 
 .show {
@@ -506,8 +529,6 @@ WINNER!!!!!!!
   background-image: url("../imagenes/winbunnu.gif");
 }
 
-
-}
 /*
 LOOSER
   */
@@ -517,6 +538,8 @@ LOOSER
   width: 100%;
   position: absolute;
   height: calc(100vh - 5px);
+  z-index: 9;
+  display: none;
 
 }
 .loseButtonContainer {
@@ -532,4 +555,27 @@ LOOSER
   left: calc(50% - 60px);
   bottom: 25px;
   background-image: url("../imagenes/rabbitlose.gif");
+}
+
+/*
+SUPER winPlayer
+*/
+
+.superWinContainer {
+  background-image: url("../imagenes/finalisima.jpg");
+  background-size: cover;
+  width: 100%;
+  position: absolute;
+  height: calc(100vh - 5px);
+  z-index: 0;
+  display: none;
+  z-index: 1;
+}
+
+
+.superWinTitle {
+  padding-top: 20px;
+
+  font-size: 48px;
+  line-height: 60px;
 }
