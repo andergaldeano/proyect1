@@ -6,5 +6,5 @@ function Game(options){
 
   this.arrow = new Arrow($(".arrow"), $(".arrowContainer"), $(".bullseyeRed"), 0, 0, 5, 0);
   this.player = new Player(0, $('.overlay .points'));
-  this.impact = new Impact($(".bullseye"), $(".bullseyeRed"), $('.overlay'), $("#effects"), $(".bullseyeRed").css("width"), 100, options.level, $("#winSong"));
+  this.impact = new Impact($(".bullseye"), $(".bullseyeRed"), $('.overlay'), $("#effects"), $(".bullseyeRed").css("width"), 25, options.level, $("#winSong"));
 }
