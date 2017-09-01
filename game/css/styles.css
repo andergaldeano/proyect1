@@ -188,6 +188,25 @@ bullseyes area
   padding-top: 10px;
 }
 
+.keyRules {
+  background-size: cover;
+  height: 400px;
+  width: 400px;
+  position: absolute;
+  left: 2%;
+  bottom: 20px;
+  background-image: url("../imagenes/rulesPosit.png");
+}
+.pointsRules{
+  background-size: cover;
+  height: 350px;
+  width: 350px;
+  position: absolute;
+  left: 70%;
+  bottom: 20px;
+  background-image: url("../imagenes/bulleyeRules.png");
+}
+
 
 /*
 congratulations message after make points
